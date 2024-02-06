@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Új hirdetés elküldése</title>
+</head>
+<body class="container mt-5 ">
+  <h1 class="text-center">Új hirdetés elküldése</h1>
+
+  <form id="hirdet">
+    <div class="form-group">
+      <label for="tipus">Ingatlan típusa:</label>
+      <select class="form-control" id="tipus" name="tipus">
+        <option value="haz">Ház</option>
+        <option value="apartman">Lakás</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="datum">Hirdetés dátuma:</label>
+      <input type="text" class="form-control" id="datum" name="datum" value="" readonly>
+    </div>
+
+    <div class="form-group">
+        <label for="leiras">Ingatlan leírása:</label>
+        <textarea class="form-control" id="leiras" name="leairas" rows="5"></textarea>
+      </div>
+
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="teher"> 
+        <label class="form-check-label" for="teher">Tehermentes ingatlan</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary container mt-3 justify-content-center">Küldés</button>
+  </form>
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    document.getElementById('datum').value = new Date().toLocaleDateString();
+
+    document.getElementById('hirdet').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const formData = new FormData(event.target);
+
+      for (const pair of formData.entries()) {
+        console.log(`${pair[0]}: ${pair[1]}`);
+      }
+    });
+  </script>
+</body>
+</html>
+
